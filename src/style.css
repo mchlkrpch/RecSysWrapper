@@ -1,0 +1,676 @@
+html[data-theme='light'] {
+  --background-color: #ffffff; /* Белый фон */
+  --text-color: #212121;       /* Темный текст */
+  --primary-color: #3f51b5;     /* Основной цвет (например, для кнопок) */
+  --secondary-color: #f5f5f5; /* Вторичный цвет фона (для карточек и т.д.) */
+
+  /* Убедимся, что цвета применяются ко всему приложению */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  
+  /* Плавный переход при возможных изменениях */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+input{
+  background-color: transparent;
+}
+
+/* 
+  Теперь используйте эти переменные в остальном приложении.
+  Например:
+*/
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden;
+}
+
+:root {
+  --alink-color: #4287f5;
+  --link-visited: #5b21b6;
+  --alink-active-color: #4287f5;
+}
+
+#root {
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.hidden {
+  position: absolute;
+  visibility: hidden; 
+  height: 0;
+  width: 100%;
+}
+
+.SpTextarea {
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  font: inherit;
+  padding: 0;
+  background-color: transparent;
+  white-space: pre-wrap;
+  width: 100%;
+  padding: 0px;
+}
+
+.inline_node {
+  display: inline-block;
+	width:  fit-content;
+	height: fit-content;
+}
+
+.canvas {
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+  font-size: 13px;
+  font-family: 'Roboto Mono';
+  padding: 0;
+  margin: 0;
+}
+
+.fullW {
+  width: 100%;
+  scrollbar-width: none;
+  height: fit-content;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+how to disable autofill bg color
+https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+	-webkit-background-clip: text;
+	box-shadow: inset 0 0 20px 20px transparent;
+}
+
+a {
+  color: var(--alink-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 1px;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:active {
+  color: var(--alink-active-color);
+}
+
+
+.sp_input {
+  outline: none;
+  border: none;
+
+  width: 100%;
+  min-height: fit-content;
+  overflow-y: hidden;
+  resize: none;
+}
+
+.math-inline {
+  display: inline;
+}
+
+p {
+  margin: 0;
+}
+
+.katex {
+  font-size: 1em !important;
+}
+
+.mathboard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 4pt;
+  row-gap: 0pt;
+}
+
+
+.resizerW {
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+  width: 20px;
+  padding: 0;
+  cursor: col-resize;
+}
+
+.react-flow__pane {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: var(--chkra-colors-bg-muted);
+}
+
+.rf__wrapper {
+  background-color: black;
+}
+
+.leftContainer {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent; 
+}
+
+
+.leftContainer::before {
+  content: '';
+  position: absolute;
+  inset: -60px;
+  backdrop-filter: blur(70px);
+}
+
+.viewer {
+  margin:5px;
+}
+
+.viewer-root {
+  padding:15px;
+}
+
+.SpDef-frame {
+  border-radius: 4px;
+  width: 256px;
+  height: 80px;
+  padding: 5px;
+  color: black;
+
+  border: none;
+  /* background-color: transparent; */
+}
+
+.SpEdge {
+  fill: transparent;
+  /* stroke: color-mix(in srgb, var(--chakra-colors-fg) 5%, transparent); */
+  stroke: color-mix(in srgb, #DBEEFF 100%, transparent);
+}
+
+.cnt-adder-card-editor{
+  opacity: 0;
+  padding-left: 20px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.cnt-adder-card-editor:hover{
+  opacity: .2;
+  background-color: #ddd;
+}
+
+@keyframes kf-color-th-hover {
+  from {
+    border: 1px solid transparent;
+  }
+  to {
+    border: 1px solid #f6edd2;
+  }
+}
+
+.feed-block{
+  /* background-color: white; */
+  /* font-family: 'Roboto'; */
+  padding: 0px;
+  /* border: 1px solid #ddd; */
+  border-radius: 10px;
+  /* margin-bottom: -20px; */
+  padding: 10px 3px;
+  margin-bottom: -20px;
+  gap: 0px;
+  /* border-top: 1px solid #ddd; */
+  box-shadow: 0px -10px 15px 4px rgba(0,0,0,0.06);
+}
+
+.selected-block{
+  border: 1px solid blue;
+}
+
+.block-frame{
+  /* border: 1px solid #ddd; */
+  /* border-radius: 15px; */
+  /* margin-bottom: -60px; */
+  padding: 20px 0px;
+  /* background-color: white; */
+  /* box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.05); */
+}
+
+.forget-false-false{
+  padding: 0;
+}
+.forget-false-true {
+  margin-right: -10px;
+  margin-left: 10px;
+}
+.forget-true-false {
+  margin-right: -30px;
+  margin-left: 30px;
+}
+.forget-true-true {
+  margin-right: -30px;
+  margin-left: 30px;
+}
+
+
+/* .context-menu {
+  background: #1e1e1e;
+  border-style: solid;
+  box-shadow: 10px 19px 20px rgba(0, 0, 0, 10%);
+  position: absolute;
+  z-index: 3200;
+  border-radius: 8px;
+  color: white;
+}
+.context-menu button {
+  display: block;
+  color:white;
+  padding: 0.5em;
+  text-align: left;
+  width: 100%;
+}
+.context-menu button:hover {
+  background-color: #f4f4f4;
+  color:white;
+} */
+
+.react-flow__selection {
+  pointer-events: none !important;
+  inset: 10px !important;
+}
+.react-flow__nodesselection-rect {
+  pointer-events: none !important;
+  padding: 10px !important;
+  inset:-10px;
+  border: 20px solid transparent !important;
+}
+
+.custom-icon {
+  width: 15px;
+  height: 15px;
+}
+.custom-icon path {
+  fill: white;
+}
+
+/* .forget-false:hover{
+  padding: 0;
+  padding-right: -10px;
+  /* padding-left: 20px; */
+  /* animation: forget-transition-hover 0.02s ease-in;
+}*/
+
+/* @keyframes forget-transition-hover {
+  from {
+    padding-right: 30px;
+    padding-left:  0px;
+  }
+  to {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+} */
+
+/* .forget-true{
+  padding: 0;
+  padding-right: 0px;
+  padding-left: 30px;
+}
+.forget-true:hover{
+  padding: 0;
+  padding-right: 10px;
+  padding-left: 20px;
+} */
+
+.inter-thin {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.inter-light {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inter-medium {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.feed-block-Th{
+  background-color: #eee;
+  border-radius: 5px;
+  /* border: 1px solid transparent; */
+}
+.feed-block-Th:hover{
+  background-color: #faf6ea;
+  
+  border: 1px solid #fbf5e3;
+  animation: kf-color-th-hover 0.2s ease-in;
+}
+
+.feed-block-Task{
+  background-color:white;
+  border: 1px solid #eee;
+}
+
+.feed-block-Task-input-answer{
+  color: black;
+  padding: 5px;
+  height: fit-content;
+
+  outline:none;
+  border:none;
+  /* border-bottom: 1px solid #999; */
+  border-radius: 5px;
+  background-color: #eee;
+}
+.feed-block-Task-input-answer-correct{
+  color: #3061b0;
+  padding: 5px;
+  height: fit-content;
+  
+  outline: none;
+  border:none;
+  /* border-bottom: 1px solid #555; */
+  border-radius: 5px;
+  background-color: #DBEEFF;
+}
+
+
+
+.trigger-button{
+  color: #444;
+  padding: 8px;
+  min-width:35px;
+  min-height: 35px;
+  font-size: 12px;
+  border-radius: 25px;
+  /* border: 1px solid #ddd; */
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.cardTpButton{
+  font-size: 12px;
+  padding:0;
+  font-weight: 600;
+  height: fit-content;
+  width: fit-content;
+  outline: none;
+  border: none;
+
+  border:1px solid #999;
+  border-radius: 0px;
+  padding: 2px;
+}
+
+.link-button{
+  line-height: 1em;
+}
+
+
+
+
+/* frame section */
+.feed-frame{
+  font-family: 'Merriweather';
+  font-size: 16px;
+  color: #092d49;
+
+  --scrollbar-width: 8px;
+  --scrollbar-color: rgba(0, 0, 0, 0.17);
+  --scrollbar-track-color: rgba(0, 0, 0, 0.0);
+}
+
+.feed-frame::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+.feed-frame::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: 2px;
+  margin: 2px 0;
+}
+.feed-frame::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+
+
+@keyframes kf-color-hover {
+  from {
+    background-color: #f5f5f5;
+  }
+  to {
+    background-color: #f7f7f7;
+  }
+}
+
+.feed-block-Def {
+  border-radius: 10px;
+  /* background-color:#f8f8f8; */
+  background-color: #DBEEFF;
+}
+.feed-block-Def:hover {
+  /* background-color: #f7f7f7; */
+  background-color: color-mix(in srgb, #DBEEFF 50%, white);
+  animation: kf-color-hover 0.02s ease-in;
+}
+.feed-sub-block{
+  opacity: 0.3
+}
+
+@keyframes transitPos {
+  from {
+    transform: translateY(-5px); 
+  }
+  to { 
+    transform: translateY(0); 
+  }
+}
+@keyframes kf-color-bwd {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+.feed-frame-ago{
+  opacity: 0.3;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/*
+ * 2. Применяем анимацию к нашему классу
+ */
+.card-repeat-backward {
+  margin-top: 12px;
+  font-size: 14px;
+  /* font-weight: 300; */
+  animation: transitPos 0.04s ease-out, kf-color-bwd 0.1s ease-in;
+}
+
+.feed-block-links {
+  margin-top: 12px;
+  font-family: Merriwheater Sans;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.feed-block-links a {
+  text-decoration: none;
+  color: rgba(0,0,0,0.5);
+}
+
+
+
+.glass-card {
+  border:0;
+  transform: translate(-25%, -25%);
+
+  backdrop-filter: blur(12px);
+  filter: saturate(200%);
+
+  mask-image: 
+    linear-gradient(
+      to top,
+      black 0% 75%,
+      transparent 50% 100%
+    ),
+    linear-gradient(
+      to bottom,
+      black 0% 75%,
+      transparent 50% 100%
+    ),
+    linear-gradient(
+      to right,
+      black 0% 75%,
+      transparent 50% 100%
+    ),
+    linear-gradient(
+      to left,
+      black 0% 75%,
+      transparent 50% 100%
+    )
+    ;
+
+  mask-composite: intersect; 
+  -webkit-mask-composite: source-in;
+}
+
+.glass-card::before {
+}
+
+
+
+
+.blured {
+  position:absolute;
+  /* inset: 80px; - не помогает*/
+  z-index: -10;
+  /* backdrop-filter: blur(80px); */
+}
+
+
+
+
+
+.nodeOutline {
+  position: relative;
+  /* padding: 20px; */
+  z-index: -999;
+}
+
+.message {
+  font-size: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 5px;
+
+  position: fixed;
+  height: auto;
+  width: 150px;
+
+  bottom: 2vh;
+  right: 1vh;
+
+  overflow-y: auto;
+  max-height: 150px;
+  z-index: 1005;
+}
+
+.info {
+  /* background-color: #eee;
+  color: #17231E; */
+}
+
+.content-adder-div {
+  opacity: 30%;
+  cursor: 'pointer';
+  font-size: '9px';
+}
+
+
+
+.drop-menu-input{
+  border: none;
+  outline: none;
+  width: 200px;
+  height: fit-content;
+  padding: 5px;
+  font-size: 16px;
+  color: rgba(255,255,255,0.8);
+}
+
+.summary-block{
+  background-color: white;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: start;
+  border-radius: 5px;
+}
+
+.summary-block:hover{
+  background-color: #eee;
+}
+
+.context-menu{
+  background-color: #1e1e1e;
+  color: rgba(255,255,255,0.4);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  font-size: 12px;
+}

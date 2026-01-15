@@ -1,0 +1,55 @@
+/*
+  This CSS file styles the content specifically for PDF output.
+*/
+
+.pdf-container {
+  /* A4 paper width is 210mm. We give it a width that fits well within that.
+     This width is crucial for jsPDF to calculate scaling correctly. */
+  width: 800px;
+  padding: 20px;
+  background-color: white;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.pdf-container h1, .pdf-container h2, .pdf-container h3 {
+  color: #111;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-top: 24px;
+}
+
+.pdf-container p {
+  margin-bottom: 12px;
+}
+
+.pdf-container pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  white-space: pre-wrap; /* Allows long lines to wrap */
+  word-wrap: break-word;
+}
+
+.pdf-container code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.pdf-container blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 15px;
+  color: #666;
+  margin-left: 0;
+}
+
+/* Ensure KaTeX formulas have enough space and are aligned correctly */
+.pdf-container .katex-display {
+  margin: 1em 0;
+  overflow: auto;
+}
+
+.pdf-container .katex {
+  font-size: 1.1em;
+}
