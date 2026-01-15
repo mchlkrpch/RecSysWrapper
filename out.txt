@@ -1,0 +1,10 @@
+
+> spaced@0.0.0 dev
+> vite
+
+
+  VITE v6.3.5  ready in 504 ms
+
+  ➜  Local:   http://localhost:80/
+  ➜  Network: http://192.168.0.20:80/
+  ➜  press h + enter to show help
